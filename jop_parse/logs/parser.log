@@ -1,0 +1,144 @@
+2026-07-01 15:42:53.736 | INFO     | jop_parse.parsers.base:_create_driver:102 - Браузер запущен
+2026-07-01 15:42:53.737 | INFO     | jop_parse.parsers.hh:parse_search_page:34 - Парсинг страницы 1/2: https://hh.ru/search/vacancy?text=Python разработчик&area=113&page=0
+2026-07-01 15:43:06.757 | WARNING  | jop_parse.parsers.base:handle_captcha:151 - Обнаружена капча! Пауза 60 сек для ручного решения...
+2026-07-01 15:44:07.057 | ERROR    | jop_parse.parsers.base:handle_captcha:154 - Капча не решена, перезапуск драйвера...
+2026-07-01 15:44:13.029 | INFO     | jop_parse.parsers.base:_create_driver:102 - Браузер запущен
+2026-07-01 15:44:13.030 | INFO     | jop_parse.parsers.hh:parse_search_page:34 - Парсинг страницы 2/2: https://hh.ru/search/vacancy?text=Python разработчик&area=113&page=1
+2026-07-01 15:44:21.098 | WARNING  | jop_parse.parsers.base:handle_captcha:151 - Обнаружена капча! Пауза 60 сек для ручного решения...
+2026-07-01 15:45:21.480 | ERROR    | jop_parse.parsers.base:handle_captcha:154 - Капча не решена, перезапуск драйвера...
+2026-07-01 15:45:28.251 | INFO     | jop_parse.parsers.base:_create_driver:102 - Браузер запущен
+2026-07-01 15:45:28.251 | INFO     | jop_parse.parsers.hh:parse_search_page:79 - Парсинг HH завершён. Добавлено вакансий: 0
+2026-07-01 15:45:34.178 | INFO     | jop_parse.parsers.base:_create_driver:102 - Браузер запущен
+2026-07-01 15:45:34.179 | INFO     | jop_parse.parsers.habr:parse_search_page:33 - Парсинг страницы 1/2: https://career.habr.com/vacancies?q=Python разработчик&type=all&page=1
+2026-07-01 15:45:40.362 | INFO     | jop_parse.parsers.habr:_extract_cards_from_search:134 - Найдено 25 карточек на странице Habr
+2026-07-01 15:45:47.476 | WARNING  | jop_parse.parsers.base:handle_captcha:151 - Обнаружена капча! Пауза 60 сек для ручного решения...
+2026-07-01 15:46:47.494 | ERROR    | jop_parse.parsers.base:handle_captcha:154 - Капча не решена, перезапуск драйвера...
+2026-07-01 15:46:53.682 | INFO     | jop_parse.parsers.base:_create_driver:102 - Браузер запущен
+2026-07-01 15:47:00.820 | WARNING  | jop_parse.parsers.base:handle_captcha:151 - Обнаружена капча! Пауза 60 сек для ручного решения...
+2026-07-01 15:48:00.854 | ERROR    | jop_parse.parsers.base:handle_captcha:154 - Капча не решена, перезапуск драйвера...
+2026-07-01 15:48:08.155 | INFO     | jop_parse.parsers.base:_create_driver:102 - Браузер запущен
+2026-07-01 15:48:17.674 | WARNING  | jop_parse.parsers.base:handle_captcha:151 - Обнаружена капча! Пауза 60 сек для ручного решения...
+2026-07-01 15:52:58.555 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 15:52:58.556 | INFO     | jop_parse.parsers.hh:parse_search_page:34 - Парсинг страницы 1/3: https://hh.ru/search/vacancy?text=Python&area=113&page=0
+2026-07-01 15:53:09.720 | INFO     | jop_parse.parsers.hh:_extract_cards_from_search:132 - Найдено 0 карточек на странице
+2026-07-01 15:53:09.720 | WARNING  | jop_parse.parsers.hh:parse_search_page:53 - Нет вакансий на странице 1
+2026-07-01 15:53:09.720 | INFO     | jop_parse.parsers.hh:parse_search_page:79 - Парсинг HH завершён. Добавлено вакансий: 0
+2026-07-01 15:53:33.967 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 15:53:33.968 | INFO     | jop_parse.parsers.hh:parse_search_page:34 - Парсинг страницы 1/2: https://hh.ru/search/vacancy?text=Python разработчик&area=113&page=0
+2026-07-01 15:53:40.906 | INFO     | jop_parse.parsers.hh:_extract_cards_from_search:132 - Найдено 0 карточек на странице
+2026-07-01 15:53:40.907 | WARNING  | jop_parse.parsers.hh:parse_search_page:53 - Нет вакансий на странице 1
+2026-07-01 15:53:40.909 | INFO     | jop_parse.parsers.hh:parse_search_page:79 - Парсинг HH завершён. Добавлено вакансий: 0
+2026-07-01 15:53:46.497 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 15:53:46.498 | INFO     | jop_parse.parsers.habr:parse_search_page:33 - Парсинг страницы 1/2: https://career.habr.com/vacancies?q=Python разработчик&type=all&page=1
+2026-07-01 15:54:00.179 | INFO     | jop_parse.parsers.habr:_extract_cards_from_search:134 - Найдено 25 карточек на странице Habr
+2026-07-01 15:54:07.957 | WARNING  | jop_parse.parsers.base:handle_captcha:167 - Обнаружена капча (попытка 1/2). Пауза 60 сек для ручного решения...
+2026-07-01 15:54:08.062 | INFO     | jop_parse.parsers.base:handle_captcha:174 - Скриншот сохранён: jop_parse/logs/captcha_debug.png
+2026-07-01 15:55:08.079 | WARNING  | jop_parse.parsers.base:handle_captcha:167 - Обнаружена капча (попытка 2/2). Пауза 60 сек для ручного решения...
+2026-07-01 15:55:08.229 | INFO     | jop_parse.parsers.base:handle_captcha:174 - Скриншот сохранён: jop_parse/logs/captcha_debug.png
+2026-07-01 15:56:08.254 | ERROR    | jop_parse.parsers.base:handle_captcha:179 - Капча не решена после 2 попыток. Завершение.
+2026-07-01 15:56:08.255 | ERROR    | jop_parse.parsers.habr:parse_vacancy_detail:214 - Ошибка загрузки вакансии Habr https://career.habr.com/vacancies/1000142622: Капча не решена. Попробуйте:
+  1. Добавить --no-captcha-check (пропустить проверку)
+  2. Использовать прокси: создайте proxies.txt
+  3. Проверить, что сайт доступен в браузере вручную
+2026-07-01 15:56:15.950 | WARNING  | jop_parse.parsers.base:handle_captcha:167 - Обнаружена капча (попытка 1/2). Пауза 60 сек для ручного решения...
+2026-07-01 15:56:16.135 | INFO     | jop_parse.parsers.base:handle_captcha:174 - Скриншот сохранён: jop_parse/logs/captcha_debug.png
+2026-07-01 15:57:10.403 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 15:57:10.404 | INFO     | jop_parse.parsers.hh:parse_search_page:34 - Парсинг страницы 1/2: https://hh.ru/search/vacancy?text=Python разработчик&area=113&page=0
+2026-07-01 15:57:41.249 | INFO     | jop_parse.parsers.hh:_extract_cards_from_search:132 - Найдено 0 карточек на странице
+2026-07-01 15:57:41.250 | WARNING  | jop_parse.parsers.hh:parse_search_page:53 - Нет вакансий на странице 1
+2026-07-01 15:57:41.250 | INFO     | jop_parse.parsers.hh:parse_search_page:79 - Парсинг HH завершён. Добавлено вакансий: 0
+2026-07-01 15:57:47.107 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 15:57:47.107 | INFO     | jop_parse.parsers.habr:parse_search_page:33 - Парсинг страницы 1/2: https://career.habr.com/vacancies?q=Python разработчик&type=all&page=1
+2026-07-01 15:57:53.707 | INFO     | jop_parse.parsers.habr:_extract_cards_from_search:134 - Найдено 25 карточек на странице Habr
+2026-07-01 15:57:57.225 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python разработчик (Гринатом4.13)
+2026-07-01 15:58:10.966 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python-разработчик (ИТ-компания «Лоция»)
+2026-07-01 15:58:19.408 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python-разработчик (RuDesktop)
+2026-07-01 15:58:28.291 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик интеграций (API, Telegram, OpenAI) (Электросила)
+2026-07-01 15:58:36.655 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: ML разработчик / Проектная работа / АУТСТАФФ (Extyl4.67)
+2026-07-01 15:58:43.503 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python-разработчик (АВТОФОРМУЛА)
+2026-07-01 15:58:49.910 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python разработчик (ИнфоТеКС4.09)
+2026-07-01 15:58:57.373 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик бэкенда (Python/Django) в команду развития сотрудников (Яндекс3.88)
+2026-07-01 15:59:06.840 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python разработчик (IT_One4.51)
+2026-07-01 15:59:14.713 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python-разработчик (Онлайн-кинотеатр Иви4.61)
+2026-07-01 15:59:21.369 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Старший разработчик сервисов данных (Python) (БЮРО 14404.65)
+2026-07-01 15:59:28.169 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python-разработчик (LLM/RAG/MCP) (Sette)
+2026-07-01 15:59:33.908 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python developer (М Тех)
+2026-07-01 15:59:41.207 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python Developer (ITK academy)
+2026-07-01 15:59:46.720 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик Java_Python / Проектная работа / АУТСТАФФ (Extyl4.67)
+2026-07-01 15:59:55.170 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Senior Python Developer (IT-hunter)
+2026-07-01 16:00:02.500 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Golang-разработчик (Проект "API Gateway для нового сайта") (М Тех)
+2026-07-01 16:00:11.771 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Старший ML-разработчик агентов для Алисы (Яндекс3.88)
+2026-07-01 16:00:19.447 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Ведущий Python-разработчик (Лига Цифровой Экономики4.24)
+2026-07-01 16:00:28.251 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: SDET / QA Automation Architect (Framework & Tooling) (KORNFELD) (YADRO4.69)
+2026-07-01 16:00:37.439 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Senior .Net разработчик (Directum4.62)
+2026-07-01 16:00:45.278 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python разработчик (IRLIX)
+2026-07-01 16:01:37.547 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Python Developer (Hireway)
+2026-07-01 16:01:44.799 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик Python (МТС Финтех4.14)
+2026-07-01 16:01:52.129 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Java разработчик (IT_One4.51)
+2026-07-01 16:01:56.883 | INFO     | jop_parse.parsers.habr:parse_search_page:33 - Парсинг страницы 2/2: https://career.habr.com/vacancies?q=Python разработчик&type=all&page=2
+2026-07-01 16:02:01.996 | INFO     | jop_parse.parsers.habr:_extract_cards_from_search:134 - Найдено 25 карточек на странице Habr
+2026-07-01 16:02:05.919 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Руководитель группы разработки (Python) (Цифровые сервисы) (YADRO4.69)
+2026-07-01 16:02:13.332 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Старший инженер по автоматизации тестирования (Python, финтех)/ Senior AQA (Хайтек4.7)
+2026-07-01 16:02:19.708 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Tech Lead Python (IaaS/PaaS) (ГНИВЦ4.64)
+2026-07-01 16:02:25.928 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Full-stack разработчик (Bitrix + AI), middle+/senior в студию «Луч» (Genue)
+2026-07-01 16:02:33.857 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: ML Lead (CHOICEIT4.95)
+2026-07-01 16:02:42.757 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Бэкенд разработчик Java | Python | Go | C++ (Яндекс3.88)
+2026-07-01 16:02:51.601 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: .NET разработчик / Проектная работа / АУТСТАФФ (Extyl4.67)
+2026-07-01 16:02:58.760 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Middle/Senior Python Developer (Bell Integrator4.55)
+2026-07-01 16:03:06.178 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Quantitive Researcher (CHOICEIT4.95)
+2026-07-01 16:03:13.885 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: QA Automation Python (гибрид, Москва) (ITFB Group)
+2026-07-01 16:03:21.259 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик Java (Bell Integrator4.55)
+2026-07-01 16:03:28.945 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Java-разработчик в Маркет (Яндекс3.88)
+2026-07-01 16:03:38.313 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: ML-инженер (Направление клиентского сервиса) (RWB (Wildberries & Russ)4.39)
+2026-07-01 16:03:44.184 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Fullstack разработчик (Upjet)
+2026-07-01 16:03:51.488 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: C# (.NET) разработчик (Реактив4.95)
+2026-07-01 16:04:11.063 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Team Lead (Java/Python) (Банк России)
+2026-07-01 16:04:17.187 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: NLP-разработчик в Браузер (Яндекс3.88)
+2026-07-01 16:04:27.599 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Java разработчик с нуля (стажер) (Aston4.6)
+2026-07-01 16:04:35.515 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: BI-разработчик (Coral Club)
+2026-07-01 16:04:40.518 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: NLP-разработчик в Алису (Яндекс3.88)
+2026-07-01 16:04:48.344 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Ведущий QA-инженер (Go, Python) (Базис)
+2026-07-01 16:04:54.009 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик C# / Проектная работа / АУТСТАФФ (Extyl4.67)
+2026-07-01 16:05:00.490 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Java разработчик (финтех) (Bell Integrator4.55)
+2026-07-01 16:05:08.223 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Разработчик .Net с опытом работы Solar, Lekton/ Проектная работа / АУТСТАФФ (Extyl4.67)
+2026-07-01 16:05:15.274 | INFO     | jop_parse.parsers.habr:_parse_card:164 - Добавлена вакансия: Data Engineer/ MLOpsE (Bell Integrator4.55)
+2026-07-01 16:05:19.801 | INFO     | jop_parse.parsers.habr:parse_search_page:78 - Парсинг Habr завершён. Добавлено вакансий: 50
+2026-07-01 16:15:28.891 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 16:15:28.891 | INFO     | jop_parse.parsers.hh:parse_search_page:36 - Парсинг страницы 1/1: https://hh.ru/search/vacancy?text=Web разработчик&area=113&area=3&page=0
+2026-07-01 16:15:36.305 | INFO     | jop_parse.parsers.hh:_extract_cards_from_search:198 - Найдено 51 карточек на странице
+2026-07-01 16:15:41.065 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Вакансии на карте (HR-агентство Оксаны Мартыновой)
+2026-07-01 16:15:52.235 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Fullstack-разработчик (React (Mobile/Web) + Битрикс24 Web) (HR-агентство Оксаны Мартыновой)
+2026-07-01 16:16:00.891 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Web-программист стажёр (Backend) ()
+2026-07-01 16:16:10.898 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: WEB-разработчик Wordpress, Joomla, 1С-Битрикс (ООО ПЛАС)
+2026-07-01 16:16:18.185 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Java-разработчик (Magenta Technology)
+2026-07-01 16:16:26.155 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Разработчик C# (ООО Элисофт)
+2026-07-01 16:16:35.663 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Разработчик C# (Смарт Телеком)
+2026-07-01 16:16:43.431 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Backend разработчик (АО ВТБ Специализированный депозитарий)
+2026-07-01 16:16:53.326 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Frontend разработчик (АО ВТБ Специализированный депозитарий)
+2026-07-01 16:17:02.013 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Middle C# Backend Developer (Web Services) (Saber Interactive)
+2026-07-01 16:17:09.103 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Junior QA Engineer (Manual, Web) (evrone.ru)
+2026-07-01 16:17:20.063 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Разработчик (ООО ГравиЛинк)
+2026-07-01 16:17:35.584 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Руководитель отдела разработки WEB-решений ()
+2026-07-01 16:17:41.930 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Golang-разработчик ()
+2026-07-01 16:17:51.773 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Golang-разработчик ()
+2026-07-01 16:18:00.374 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Golang-разработчик ()
+2026-07-01 16:18:11.994 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: C# разработчик [Middle] (ООО КОМТЕК)
+2026-07-01 16:18:23.708 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: FullStack-разработчик (Junior) (Аналитический Центр Минприроды России)
+2026-07-01 16:18:40.371 | INFO     | jop_parse.parsers.hh:_parse_card:228 - Добавлена вакансия: Стажер-разработчик С++ (KODE)
+2026-07-01 16:21:13.372 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 16:21:13.373 | INFO     | jop_parse.parsers.hh:parse_search_page:38 - Парсинг страницы 1/1: https://hh.ru/search/vacancy?text=Web разработчик&area=3&page=0
+2026-07-01 16:21:33.457 | INFO     | jop_parse.parsers.hh:_extract_cards_from_search:206 - Найдено 31 карточек на странице
+2026-07-01 16:21:37.895 | INFO     | jop_parse.parsers.hh:_parse_card:236 - Добавлена вакансия: Вакансии на карте ()
+2026-07-01 16:21:41.575 | DEBUG    | jop_parse.parsers.hh:_parse_card:214 - Вакансия уже есть в БД: Web-программист стажёр (Backend)
+2026-07-01 16:21:52.792 | INFO     | jop_parse.parsers.hh:_parse_card:236 - Добавлена вакансия: Fullstack-разработчик (web-разработчик) (ООО Media Army)
+2026-07-01 16:22:03.127 | INFO     | jop_parse.parsers.hh:_parse_card:236 - Добавлена вакансия: Веб-разработчик / WordPress fullstack + верстка Bitrix (ИП Никулина Ольга Сергеевна)
+2026-07-01 16:22:05.889 | INFO     | jop_parse.parsers.hh:parse_search_page:77 - Достигнут лимит 3 вакансий
+2026-07-01 16:22:05.890 | INFO     | jop_parse.parsers.hh:parse_search_page:96 - Парсинг HH завершён. Добавлено вакансий: 3
+2026-07-01 16:22:11.853 | INFO     | jop_parse.parsers.base:_create_driver:104 - Браузер запущен
+2026-07-01 16:22:11.854 | INFO     | jop_parse.parsers.habr:parse_search_page:33 - Парсинг страницы 1/1: https://career.habr.com/vacancies?q=Web разработчик&type=all&city=Екатеринбург&page=1
+2026-07-01 16:22:20.420 | INFO     | jop_parse.parsers.habr:_extract_cards_from_search:140 - Найдено 25 карточек на странице Habr
+2026-07-01 16:22:28.576 | INFO     | jop_parse.parsers.habr:_parse_card:170 - Добавлена вакансия: Ведущий разработчик / техлид WebRTC (Яндекс3.88)
+2026-07-01 16:22:34.334 | INFO     | jop_parse.parsers.habr:_parse_card:170 - Добавлена вакансия: Unity-разработчик (WebGL) (Empire's Battle)
+2026-07-01 16:22:41.661 | INFO     | jop_parse.parsers.habr:_parse_card:170 - Добавлена вакансия: Разработчик WebRTC-сервисов на Go в видеоплатформу (Яндекс3.88)
+2026-07-01 16:22:44.233 | INFO     | jop_parse.parsers.habr:parse_search_page:65 - Достигнут лимит 3 вакансий
+2026-07-01 16:22:44.234 | INFO     | jop_parse.parsers.habr:parse_search_page:84 - Парсинг Habr завершён. Добавлено вакансий: 3
