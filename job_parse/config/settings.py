@@ -1,9 +1,20 @@
+import os
+import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-DB_PATH = BASE_DIR / "vacancies.db"
-LOGS_DIR = BASE_DIR / "job_parse" / "logs"
-PROXY_FILE = BASE_DIR / "proxies.txt"
+
+if sys.platform == "win32":
+    DATA_DIR = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming")) / "job-parse"
+else:
+    DATA_DIR = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share")) / "job-parse"
+
+DB_PATH = DATA_DIR / "vacancies.db"
+LOGS_DIR = DATA_DIR / "logs"
+PROXY_FILE = Path("proxies.txt")
+
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 HH_SEARCH_URL = "https://hh.ru/search/vacancy"
 HABR_SEARCH_URL = "https://career.habr.com/vacancies"

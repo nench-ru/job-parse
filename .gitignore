@@ -29,3 +29,13 @@ proxies.txt
 
 # OS
 Thumbs.db
+
+# Сборка (build, dist, spec)
+dist/
+build/
+*.spec
+*.exe
+
+# Временные файлы
+*.tmp
+*.temp

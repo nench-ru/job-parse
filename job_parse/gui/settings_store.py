@@ -2,10 +2,10 @@ import json
 from pathlib import Path
 from typing import Any
 
-from job_parse.config.settings import BASE_DIR
+from job_parse.config.settings import DATA_DIR
 
 
-CONFIG_FILE = BASE_DIR / "gui_config.json"
+CONFIG_FILE = DATA_DIR / "gui_config.json"
 
 
 DEFAULT_CONFIG: dict[str, Any] = {
