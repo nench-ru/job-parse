@@ -1,13 +1,13 @@
 [build-system]
 requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "job-parse"
 version = "1.0.0"
 description = "Умный парсер вакансий с аналитикой (HH.ru, Habr Career, SuperJob, GeekJob, Rabota, Trudvsem)"
 authors = [{ name = "nench-ru" }]
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
     "undetected-chromedriver>=3.5.5",

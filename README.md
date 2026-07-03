@@ -29,23 +29,37 @@
 
 ### Требования
 
-- **Python 3.11+**
-- **Google Chrome** (установленный) — не требуется для Trudvsem (API)
+- **Python 3.11+** (не требуется для .exe)
+- **Google Chrome** (установленный) — не требуется для Trudvsem (API) и если используете .exe
 
-### Шаги
+### Вариант 1: Python (pip)
+
+```powershell
+pip install job-parse
+# или из локальной сборки:
+pip install job_parse-1.0.0-py3-none-any.whl
+```
+
+### Вариант 2: git clone + зависимости
 
 ```powershell
 git clone https://github.com/nench-ru/job-parse.git
 cd job-parse
-python -m pip install -r requirements.txt
-python -m pip install setuptools   # если Python 3.12+ выдаёт ошибку distutils
+pip install -r requirements.txt
 ```
+
+### Вариант 3: Windows .exe (без Python)
+
+Скачайте `job_parse.exe` со страницы релиза и запустите двойным кликом.
+
+> **Примечание:** для парсинга через Selenium (HH, Habr, SuperJob и др.) требуется установленный Chrome.
+> Trudvsem работает через API — Chrome не нужен.
 
 ---
 
 ## Прокси (опционально)
 
-Положите файл `proxies.txt` в корень проекта, по одной прокси на строку:
+Положите файл `proxies.txt` в рабочую директорию (откуда запускаете программу), по одной прокси на строку:
 
 ```
 http://user:pass@ip:port
@@ -57,12 +71,27 @@ http://ip:port
 
 ---
 
+## Запуск
+
+| Способ | Команда |
+|--------|---------|
+| После `pip install` | `job_parse <команда>` |
+| Из папки с проектом | `python -m job_parse <команда>` |
+| Windows .exe | `job_parse.exe <команда>` |
+
+Для GUI добавьте аргумент `gui`:
+```powershell
+job_parse gui
+```
+
+---
+
 ## Использование (CLI)
 
 ### `parse` — Парсинг вакансий
 
 ```powershell
-python -m job_parse parse --site all --query "Python разработчик" --limit 20
+job_parse parse --site all --query "Python разработчик" --limit 20
 ```
 
 | Аргумент | По умолчанию | Описание |
@@ -94,10 +123,29 @@ python -m job_parse parse --site hh --query "Go" --pages 5 --proxy-file proxies.
 python -m job_parse parse --site hh --query "Python" --no-captcha-check
 ```
 
+Если установили через `pip install` или используете `.exe`, замените `python -m job_parse` на `job_parse` / `job_parse.exe`:
+
+```powershell
+# Все сайты
+job_parse parse --site all --query "Python" --limit 30 --headless
+
+# SuperJob по Москве
+job_parse parse --site superjob --query "Java" --city "Москва" --pages 3
+
+# Trudvsem через API (без Chrome, мгновенно)
+job_parse parse --site trudvsem --query "Python"
+
+# HH с прокси
+job_parse parse --site hh --query "Go" --pages 5 --proxy-file proxies.txt
+
+# Без проверки капчи
+job_parse parse --site hh --query "Python" --no-captcha-check
+```
+
 ### `stats` — Общая статистика
 
 ```powershell
-python -m job_parse stats
+job_parse stats
 ```
 
 Показывает количество вакансий по сайтам, топ-20 навыков, топ-10 городов.
@@ -105,28 +153,28 @@ python -m job_parse stats
 ### `analyze skills` — Анализ навыков
 
 ```powershell
-python -m job_parse analyze skills --top 30
-python -m job_parse analyze skills --skill Docker
+job_parse analyze skills --top 30
+job_parse analyze skills --skill Docker
 ```
 
 ### `analyze salary` — Анализ зарплат
 
 ```powershell
-python -m job_parse analyze salary
-python -m job_parse analyze salary --skill Python
+job_parse analyze salary
+job_parse analyze salary --skill Python
 ```
 
 ### `list` — Список вакансий
 
 ```powershell
-python -m job_parse list --site hh --limit 10
+job_parse list --site hh --limit 10
 ```
 
 ### `export` — Экспорт данных
 
 ```powershell
-python -m job_parse export --format excel --output report.xlsx
-python -m job_parse export --format csv --output data.csv
+job_parse export --format excel --output report.xlsx
+job_parse export --format csv --output data.csv
 ```
 
 ---
@@ -134,7 +182,7 @@ python -m job_parse export --format csv --output data.csv
 ## Использование (GUI)
 
 ```powershell
-python -m job_parse gui
+job_parse gui
 ```
 
 Открывает окно с 4 вкладками:
@@ -146,7 +194,9 @@ python -m job_parse gui
 | **Экспорт** | Выбор формата, пути, кнопка экспорта |
 | **База данных** | Таблица вакансий с фильтром по сайту |
 
-Параметры автоматически сохраняются в `gui_config.json`.
+Параметры автоматически сохраняются в `gui_config.json` в директории данных:
+- Windows: `%APPDATA%/job-parse/gui_config.json`
+- Linux: `~/.local/share/job-parse/gui_config.json`
 
 ---
 
@@ -157,7 +207,8 @@ job-parse/
 ├── pyproject.toml
 ├── requirements.txt
 ├── .gitignore
-├── proxies.txt              # (опционально)
+├── LICENSE                  # MIT
+├── build_exe.py             # Сборка .exe (PyInstaller)
 ├── job_parse/               # Python-пакет
 │   ├── __main__.py          # Точка входа
 │   ├── config/settings.py   # URL, города, словарь навыков
@@ -177,15 +228,28 @@ job-parse/
 │   └── gui/                 # GUI на CustomTkinter
 │       ├── app.py, parse_tab.py, analytics_tab.py
 │       ├── export_tab.py, list_tab.py
-│       ├── log_console.py, settings_store.py
-│       └── logs/            # Логи и скриншоты капчи
+│       └── log_console.py, settings_store.py
 ```
+
+### Директория данных
+
+База данных, логи и настройки GUI хранятся в системной директории приложения:
+
+| Платформа | Путь |
+|-----------|------|
+| Windows   | `%APPDATA%/job-parse/` |
+| Linux     | `~/.local/share/job-parse/` |
+
+Там находятся:
+- `vacancies.db` — SQLite с вакансиями
+- `gui_config.json` — сохранённые параметры GUI
+- `logs/` — логи и скриншоты капчи
 
 ---
 
 ## Структура базы данных
 
-Файл: `vacancies.db` (SQLite, создаётся автоматически)
+Файл: `vacancies.db` (SQLite, создаётся автоматически в директории данных)
 
 | Поле | Тип | Описание |
 |------|-----|---------|

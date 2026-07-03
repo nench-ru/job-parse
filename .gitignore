@@ -30,11 +30,12 @@ proxies.txt
 # OS
 Thumbs.db
 
-# Сборка (build, dist, spec)
+# Сборка (build, dist, spec, egg-info)
 dist/
 build/
 *.spec
 *.exe
+*.egg-info/
 
 # Временные файлы
 *.tmp
