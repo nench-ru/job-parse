@@ -18,7 +18,7 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 HH_SEARCH_URL = "https://hh.ru/search/vacancy"
 HABR_SEARCH_URL = "https://career.habr.com/vacancies"
-SUPERJOB_SEARCH_URL = "https://www.superjob.ru/vacancies/search/"
+SUPERJOB_SEARCH_URL = "https://www.superjob.ru/vacancy/search/"
 GEEKJOB_SEARCH_URL = "https://geekjob.ru/vacancies"
 RABOTA_SEARCH_URL = "https://www.rabota.ru/vacancies/"
 TRUDVSEM_API_URL = "https://opendata.trudvsem.ru/api/v1/vacancies"
@@ -98,7 +98,7 @@ TRUDVSEM_CITY_OKATO = {
 
 SUPERJOB_CITY_SLUGS = {
     "Москва": "moskva",
-    "Санкт-Петербург": "sankt-peterburg",
+    "Санкт-Петербург": "spb",
     "Новосибирск": "novosibirsk",
     "Екатеринбург": "ekaterinburg",
     "Казань": "kazan",

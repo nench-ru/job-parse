@@ -51,8 +51,12 @@ class LogRedirector:
 
     def emit(self, record):
         try:
-            msg = record.getMessage()
-            level = record["level"].name
+            if isinstance(record, dict):
+                msg = record.get("message", str(record))
+                level = record.get("level", {}).get("name", "INFO")
+            else:
+                msg = str(record)
+                level = "INFO"
             if level == "ERROR":
                 prefix = "ERROR"
             elif level == "WARNING":

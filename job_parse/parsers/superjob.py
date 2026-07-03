@@ -35,7 +35,8 @@ class SuperJobParser(SeleniumSiteParser):
     ]
 
     def build_search_url(self, query: str, city: str, page: int) -> str:
-        params = f"?keywords={query}"
         if city and city in self.city_ids:
-            params += f"&town={self.city_ids[city]}"
-        return f"{self.search_url}{params}&page={page + 1}"
+            base = f"https://{self.city_ids[city]}.superjob.ru/vacancy/search/"
+        else:
+            base = self.search_url
+        return f"{base}?keywords={query}&page={page + 1}"

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "job-parse"
-version = "1.0.0"
+version = "1.0.0a1"
 description = "Умный парсер вакансий с аналитикой (HH.ru, Habr Career, SuperJob, GeekJob, Rabota, Trudvsem)"
 authors = [{ name = "nench-ru" }]
 license = "MIT"

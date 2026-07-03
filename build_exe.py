@@ -73,6 +73,8 @@ hidden_imports = [
     "--hidden-import", "loguru",
     "--hidden-import", "httpx",
     "--hidden-import", "pandas",
+    "--hidden-import", "numpy",
+    "--hidden-import", "PIL",
     "--hidden-import", "openpyxl",
     "--hidden-import", "rich",
 ]
@@ -83,8 +85,7 @@ collect_data = [
 ]
 
 if __name__ == "__main__":
-    mode = "--onefile" if "--onefile" in sys.argv else "--onedir"
-    args = common_args + [mode] + hidden_imports + collect_data
-    print(f"Сборка {name} в режиме {mode}...")
+    args = common_args + ["--onefile", "--windowed"] + hidden_imports + collect_data
+    print("Сборка job_parse.exe (onefile, windowed)...")
     PyInstaller.__main__.run(args)
-    print(f"Готово! Исполняемый файл: dist/")
+    print("Готово! Исполняемый файл: dist/job_parse.exe")
