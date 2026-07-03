@@ -3,10 +3,10 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.backends._legacy:_Backend"
 
 [project]
-name = "jop_parse"
+name = "job-parse"
 version = "1.0.0"
-description = "Умный парсер вакансий с аналитикой (HH.ru, Habr Career)"
-authors = [{ name = "jop_parse" }]
+description = "Умный парсер вакансий с аналитикой (HH.ru, Habr Career, SuperJob, GeekJob, Rabota, Trudvsem)"
+authors = [{ name = "nench-ru" }]
 requires-python = ">=3.11"
 dependencies = [
     "undetected-chromedriver>=3.5.5",
@@ -22,4 +22,4 @@ dependencies = [
 ]
 
 [project.scripts]
-jop_parse = "jop_parse.__main__:main"
+job_parse = "job_parse.__main__:main"

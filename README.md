@@ -1,14 +1,17 @@
-# jop_parse — Умный парсер вакансий с аналитикой
+# job-parse — Умный парсер вакансий с аналитикой
 
-Парсит **HH.ru** и **Habr Career** по заданным критериям через Selenium с обходом антидетекта.  
+Парсит **6 сайтов** по заданным критериям: 5 через Selenium (с обходом антидетекта) + Trudvsem через официальное API.  
 Анализирует требования к позициям (какие технологии чаще просят), строит статистику зарплат по стеку.  
-Экспорт в **CSV** и **Excel** (4 листа).
+Экспорт в **CSV** и **Excel** (4 листа).  
+Графический интерфейс на **CustomTkinter**.
 
 ---
 
 ## Возможности
 
-- Парсинг HH.ru и Habr Career через `undetected-chromedriver` (антидетект)
+- Парсинг 6 сайтов:
+  - **HH.ru**, **Habr Career**, **SuperJob.ru**, **GeekJob.ru**, **Rabota.ru** — через `undetected-chromedriver` (антидетект)
+  - **Trudvsem.ru** (Работа России) — через официальное REST API (без Selenium)
 - Дедупликация вакансий по URL — повторный запуск не сохраняет дубликаты
 - Извлечение навыков: структурно (блок ключевых навыков) + текстовый поиск по словарю из 100+ технологий
 - Парсинг зарплат (вилки, валюты, конвертация USD/EUR/KZT → RUB)
@@ -17,7 +20,8 @@
 - Статистика: топ навыков, распределение по городам/источникам
 - Аналитика ЗП: по навыку, по городу, по источнику
 - Экспорт: CSV (все вакансии) или Excel (4 листа: вакансии, топ навыков, ЗП по городам, общая статистика)
-- Rich-интерфейс: цветные таблицы, прогресс-бары, панели в терминале
+- CLI (rich-таблицы) и GUI (CustomTkinter) — два интерфейса на выбор
+- Сохранение последних параметров между запусками (`gui_config.json`)
 
 ---
 
@@ -26,23 +30,16 @@
 ### Требования
 
 - **Python 3.11+**
-- **Google Chrome** (установленный)
+- **Google Chrome** (установленный) — не требуется для Trudvsem (API)
 
 ### Шаги
 
 ```powershell
-# Клонировать репозиторий
-git clone https://github.com/your-username/jop_parse.git
-cd jop_parse
-
-# Установить зависимости
+git clone https://github.com/nench-ru/job-parse.git
+cd job-parse
 python -m pip install -r requirements.txt
-
-# Или через pip install setuptools (если Python 3.12+ выдаёт ошибку distutils)
-python -m pip install setuptools
+python -m pip install setuptools   # если Python 3.12+ выдаёт ошибку distutils
 ```
-
-Готово. База данных SQLite создаётся автоматически при первом запуске.
 
 ---
 
@@ -60,121 +57,129 @@ http://ip:port
 
 ---
 
-## Использование
+## Использование (CLI)
 
 ### `parse` — Парсинг вакансий
 
 ```powershell
-python -m jop_parse parse --site all --query "Python разработчик" --pages 3
+python -m job_parse parse --site all --query "Python разработчик" --limit 20
 ```
 
 | Аргумент | По умолчанию | Описание |
 |----------|-------------|---------|
-| `--site` | `all` | `hh` / `habr` / `all` |
+| `--site` | `all` | `hh` / `habr` / `superjob` / `geekjob` / `rabota` / `trudvsem` / `all` |
 | `--query` | **обязательный** | Поисковый запрос |
-| `--city` | — | Город (необязательно) |
+| `--city` | — | Город |
 | `--pages` | `3` | Количество страниц поиска |
 | `--limit` | `0` | Лимит новых вакансий (0 — без лимита) |
 | `--headless` | — | Запуск Chrome без GUI (фоном) |
 | `--proxy-file` | — | Путь к файлу с прокси |
 | `--no-captcha-check` | — | Отключить проверку капчи |
 
-Алгоритм:
-1. Открывает страницу поиска
-2. Собирает карточки вакансий (название, компания, город, зарплата, ссылка)
-3. Для **новых** вакансий (нет в БД) открывает карточку и извлекает описание + навыки
-4. Повторяет для каждой страницы до лимита
-
-Пример:
+Примеры:
 ```powershell
-# Парсинг HH по Москве, 5 страниц, через прокси, без GUI
-python -m jop_parse parse --site hh --query "Java разработчик" --city "Москва" --pages 5 --headless --proxy-file proxies.txt
+# Все сайты
+python -m job_parse parse --site all --query "Python" --limit 30 --headless
 
-# Собрать 10 новых вакансий и остановиться
-python -m jop_parse parse --site all --query "Python" --limit 10
+# SuperJob по Москве
+python -m job_parse parse --site superjob --query "Java" --city "Москва" --pages 3
 
-# Без проверки капчи (если ложно срабатывает)
-python -m jop_parse parse --site all --query "Go developer" --no-captcha-check
+# Trudvsem через API (без Chrome, мгновенно)
+python -m job_parse parse --site trudvsem --query "Python"
+
+# HH с прокси
+python -m job_parse parse --site hh --query "Go" --pages 5 --proxy-file proxies.txt
+
+# Без проверки капчи
+python -m job_parse parse --site hh --query "Python" --no-captcha-check
 ```
-
----
 
 ### `stats` — Общая статистика
 
 ```powershell
-python -m jop_parse stats
+python -m job_parse stats
 ```
 
-Показывает:
-- Количество вакансий в базе (всего, по источникам)
-- Топ-20 навыков
-- Топ-10 городов
-
----
+Показывает количество вакансий по сайтам, топ-20 навыков, топ-10 городов.
 
 ### `analyze skills` — Анализ навыков
 
 ```powershell
-python -m jop_parse analyze skills --top 30
-python -m jop_parse analyze skills --skill Docker
+python -m job_parse analyze skills --top 30
+python -m job_parse analyze skills --skill Docker
 ```
-
-| Аргумент | По умолчанию | Описание |
-|----------|-------------|---------|
-| `--top` | `20` | Количество навыков в топе |
-| `--skill` | — | Фильтр по названию навыка |
-
----
 
 ### `analyze salary` — Анализ зарплат
 
 ```powershell
-# Общая статистика зарплат + по городам
-python -m jop_parse analyze salary
-
-# Зарплаты для конкретного навыка
-python -m jop_parse analyze salary --skill Python
+python -m job_parse analyze salary
+python -m job_parse analyze salary --skill Python
 ```
-
-| Аргумент | По умолчанию | Описание |
-|----------|-------------|---------|
-| `--skill` | — | Навык для детального анализа ЗП |
-
----
 
 ### `list` — Список вакансий
 
 ```powershell
-python -m jop_parse list --site hh --limit 10
+python -m job_parse list --site hh --limit 10
 ```
-
-| Аргумент | По умолчанию | Описание |
-|----------|-------------|---------|
-| `--site` | `all` | `hh` / `habr` / `all` |
-| `--limit` | `20` | Сколько вакансий вывести |
-
----
 
 ### `export` — Экспорт данных
 
 ```powershell
-# Excel (4 листа)
-python -m jop_parse export --format excel --output report.xlsx
-
-# CSV (все вакансии одной таблицей)
-python -m jop_parse export --format csv --output data.csv
+python -m job_parse export --format excel --output report.xlsx
+python -m job_parse export --format csv --output data.csv
 ```
 
-| Аргумент | По умолчанию | Описание |
-|----------|-------------|---------|
-| `--format` | `excel` | `csv` / `excel` |
-| `--output` | `report.xlsx` | Путь к файлу |
+---
 
-При экспорте в Excel создаются листы:
-- **Вакансии** — все данные по вакансиям
-- **Топ навыков** — топ-50 навыков с частотой упоминания
-- **ЗП по городам** — средняя, медианная, мин/макс зарплата по городам
-- **Общая статистика** — средняя, медианная, мин/макс, стандартное отклонение
+## Использование (GUI)
+
+```powershell
+python -m job_parse gui
+```
+
+Открывает окно с 4 вкладками:
+
+| Вкладка | Функции |
+|---------|---------|
+| **Парсинг** | Все параметры парсинга + лог в реальном времени + кнопка Стоп |
+| **Аналитика** | Топ навыков, ЗП по навыку/городу, общая статистика |
+| **Экспорт** | Выбор формата, пути, кнопка экспорта |
+| **База данных** | Таблица вакансий с фильтром по сайту |
+
+Параметры автоматически сохраняются в `gui_config.json`.
+
+---
+
+## Структура проекта
+
+```
+job-parse/
+├── pyproject.toml
+├── requirements.txt
+├── .gitignore
+├── proxies.txt              # (опционально)
+├── job_parse/               # Python-пакет
+│   ├── __main__.py          # Точка входа
+│   ├── config/settings.py   # URL, города, словарь навыков
+│   ├── models/vacancy.py    # dataclass Vacancy
+│   ├── storage/db.py        # SQLite (дедупликация по URL)
+│   ├── proxy/manager.py     # Загрузка/тест/ротация прокси
+│   ├── parsers/
+│   │   ├── base.py              # Базовый Selenium-класс
+│   │   ├── selenium_base.py     # Общий класс для Selenium-сайтов
+│   │   ├── hh.py, habr.py, superjob.py, geekjob.py, rabota.py
+│   │   └── trudvsem.py          # API-парсер (без Selenium)
+│   ├── analytics/
+│   │   ├── stats.py         # Топ навыков, распределение
+│   │   └── salary.py        # ЗП по стеку/городу
+│   ├── export/exporter.py   # CSV / Excel
+│   ├── cli/app.py           # CLI-интерфейс
+│   └── gui/                 # GUI на CustomTkinter
+│       ├── app.py, parse_tab.py, analytics_tab.py
+│       ├── export_tab.py, list_tab.py
+│       ├── log_console.py, settings_store.py
+│       └── logs/            # Логи и скриншоты капчи
+```
 
 ---
 
@@ -185,17 +190,17 @@ python -m jop_parse export --format csv --output data.csv
 | Поле | Тип | Описание |
 |------|-----|---------|
 | `id` | INTEGER PK | Автоинкремент |
-| `source` | TEXT | `hh` или `habr` |
-| `url` | TEXT UNIQUE | Ссылка на вакансию (ключ дедупликации) |
-| `title` | TEXT | Название должности |
+| `source` | TEXT | `hh` / `habr` / `superjob` / `geekjob` / `rabota` / `trudvsem` |
+| `url` | TEXT UNIQUE | Ссылка (ключ дедупликации) |
+| `title` | TEXT | Должность |
 | `company` | TEXT | Компания |
 | `city` | TEXT | Город |
-| `salary_min` | INTEGER | Нижняя граница ЗП (в рублях) |
-| `salary_max` | INTEGER | Верхняя граница ЗП (в рублях) |
-| `salary_currency` | TEXT | Валюта (RUB/USD/EUR/KZT) |
-| `description` | TEXT | Полное описание вакансии |
-| `skills` | TEXT | JSON-массив найденных технологий |
-| `parsed_at` | TEXT | Дата и время парсинга |
+| `salary_min` | INTEGER | Нижняя граница (₽) |
+| `salary_max` | INTEGER | Верхняя граница (₽) |
+| `salary_currency` | TEXT | Валюта |
+| `description` | TEXT | Описание |
+| `skills` | TEXT | JSON-массив технологий |
+| `parsed_at` | TEXT | Дата парсинга |
 
 ---
 
@@ -203,20 +208,11 @@ python -m jop_parse export --format csv --output data.csv
 
 | Ситуация | Поведение |
 |----------|----------|
-| Капча (Cloudflare/reCaptcha) | Пауза 60 сек × 2 попытки, скриншот в `logs/captcha_debug.png`, затем RuntimeError |
-| Таймаут загрузки (>60 сек) | Пропуск страницы, переход к следующей |
-| 5 таймаутов подряд | Парсинг источника прекращается |
-| Прокси не работает | Замена на случайный рабочий; если нет рабочих — прямой IP |
-| Упал ChromeDriver | Перезапуск драйвера |
-| Сбой в карточке вакансии | Пропуск одной карточки, продолжение парсинга |
+| Капча | 2 попытки × 60 сек, скриншот в `logs/captcha_debug.png`, затем RuntimeError |
+| Таймаут (>60 сек) | Пропуск страницы |
+| 5+ таймаутов подряд | Парсинг сайта прекращается |
+| Прокси не работает | Случайный рабочий; если нет — прямой IP |
+| Падение ChromeDriver | Автоперезапуск |
+| Ошибка в карточке | Пропуск одной карточки |
 
-Логи пишутся в `jop_parse/logs/parser.log`.
-
----
-
-## Рекомендации
-
-1. **Не парсить слишком часто** — задержки 2–6 секунд между запросами встроены, но для больших объёмов добавляйте `--proxy-file`
-2. **При ошибке капчи** сначала попробуйте `--no-captcha-check`, затем настройте прокси
-3. **Перед первым запуском** проверьте, что HH.ru и Habr Career открываются в обычном Chrome
-4. **Для стабильной работы** используйте `--headless` (фоновый режим)
+Логи: `job_parse/logs/parser.log`

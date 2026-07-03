@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.DS_Store
+venv/
+.venv/
+
+# База данных
+*.db
+
+# Логи
+job_parse/logs/*
+!job_parse/logs/.gitkeep
+
+# Конфигурация GUI
+gui_config.json
+
+# Экспорт
+*.xlsx
+*.csv
+
+# Прокси
+proxies.txt
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
